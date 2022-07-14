@@ -1,0 +1,21 @@
+<!doctype html>
+<html></html>
+<head>
+<title>Users</title>
+</head>
+<body>
+	<h1>Application User List</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}">user_id</td>
+			<td th:text="${user.name}">user_name</td>
+		</tr>
+	</table>
+</body>
+</html>
