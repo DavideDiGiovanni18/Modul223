@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ch.zli.m223.ksh19a.dd.CRM.repository.UserRepository;
 
+//TEST
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
