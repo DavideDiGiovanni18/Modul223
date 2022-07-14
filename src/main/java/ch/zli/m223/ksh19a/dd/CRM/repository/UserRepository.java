@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<AppUserImpl, Long> {
 		FlughafenImpl flughafenImpl = (FlughafenImpl) hafen;
 
 		// create new User
-		AppUserImpl newUser = new AppUserImpl(username, password);
+		AppUserImpl newUser = new AppUserImpl(username, password, (FlughafenImpl) hafen);
 
 		// Save Role to DB
 		AppUserImpl savedNewuser = save(newUser);

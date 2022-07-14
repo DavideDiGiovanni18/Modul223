@@ -15,7 +15,10 @@ public class FlughafenDto {
 		name = hafen.getName();
 		usersList = new ArrayList<>();
 		for (var user : hafen.getUser()) {
-			usersList.add(user.getEmail());
+			usersList.add("ijdifdj");
+			for (var rolle : user.getRoles()) {
+				usersList.add("ijdifdj");
+			}
 		}
 	}
 

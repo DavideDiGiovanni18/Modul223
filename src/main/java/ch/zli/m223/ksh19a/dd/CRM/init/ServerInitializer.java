@@ -36,10 +36,10 @@ public class ServerInitializer implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 
 		Laender land = laenderRepository.insert("Schweiz");
-		Laender land2 = laenderRepository.insert("Italien");
-		Flughafen eins = flughafenRepository.insert("Flughafen Zürich", land);
+		Laender land2 = laenderRepository.insert("Italien");// Laender
+		Flughafen eins = flughafenRepository.insert("Flughafen Zürich", land);// Flughafen
 
-		AppUser max = userRepository.insert("Max", "max", eins);
+		AppUser max = userRepository.insert("Max", "max", eins);// User
 		roleRepository.insert(AppRoles.ADMIN, max);
 		roleRepository.insert(AppRoles.USER, max);
 

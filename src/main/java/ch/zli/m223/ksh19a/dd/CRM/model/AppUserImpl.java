@@ -43,11 +43,12 @@ public class AppUserImpl implements AppUser {
 		roles = new ArrayList<>();
 	}
 
-	public AppUserImpl(String name, String password) {
+	public AppUserImpl(String name, String password, FlughafenImpl flughafen) {
 		this();
 		this.name = name;
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		this.passwordHash = encoder.encode(password);
+		this.flughafen = flughafen;
 	}
 
 	@Override

@@ -55,7 +55,6 @@ public class FlughafenImpl implements Flughafen {
 	@Override
 	public void addUserToList(AppUserImpl newAppUser) {
 		users.add(newAppUser);
-
 	}
 
 }
