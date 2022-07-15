@@ -27,7 +27,7 @@ Das Programm wurde mit dem Framework Spring Boot in Java umgesetzt und benötigt
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `name`      | `FlughafenInputDto` | Name of Flughafen |
+| `name`      | `FlughafenInputDto` | Insert Name of Flughafen as JSON|
 
 
 #### Delete Flughafen
@@ -38,4 +38,125 @@ Das Programm wurde mit dem Framework Spring Boot in Java umgesetzt und benötigt
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `void` | Put the ID number in the URL |
+| `id`      | `void` | Put the ID number of a flughafen in the URL |
+
+
+### LandRestController
+
+#### Get Länderliste
+
+```http
+  GET /api/v2/laender
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `none` | `List<LandDto>` | returns JSON of Länderlist|
+
+#### Get Land
+
+```http
+  GET /api/v2/laender/ID
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `LandDto` | returns JSON of a Land |
+
+
+#### Get Flughafen from one Land
+
+```http
+  GEt /api/v2/laender/ID/flughafen  
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `void` | Put the ID number of a Land in the URL |
+
+
+### UserRestController (Admin)
+
+#### Get Userlist
+
+```http
+  GET /api/v1/admin
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `none` | `List<UserDto>` | returns a list of Users|
+
+#### Post a User 
+
+```http
+  POST /api/v1/admin/ID
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `UserDto` | Put a ID of a User in the URL|
+
+
+#### Delete a User
+
+```http
+  DELETE  /api/v1/admin/ID
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `void` | Put the ID number of a User in the URL|
+
+
+### UserWebController (Admin)
+
+#### Get Userlist
+
+```http
+  GET /userlist  
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `none`      | `String` | Shows the Userlist in the browser |
+
+#### Get Adminseite
+
+```http
+  GET /admin
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `none` | `String` | Only an Admin can access the Pages & Subpages|
+
+#### Get Passagierseite
+
+```http
+  GET /passagier
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `none`      | `String` | Only an Passagier can access the Pages & Subpages |
+
+
+#### Check loggedin
+
+```http
+  GET /logedin
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `none`      | `String` | Passager and Admin can access the Pages & Subpages |
+
+
+
+
+
+
+
+
+
