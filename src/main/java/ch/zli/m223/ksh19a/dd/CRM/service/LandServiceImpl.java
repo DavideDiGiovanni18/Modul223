@@ -6,28 +6,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ch.zli.m223.ksh19a.dd.CRM.exception.InvalidArgumentException;
 import ch.zli.m223.ksh19a.dd.CRM.exception.LandNotFoundException;
+import ch.zli.m223.ksh19a.dd.CRM.exception.UserAllreadyExistsException;
 import ch.zli.m223.ksh19a.dd.CRM.model.Flughafen;
-import ch.zli.m223.ksh19a.dd.CRM.model.Laender;
+import ch.zli.m223.ksh19a.dd.CRM.model.Land;
 import ch.zli.m223.ksh19a.dd.CRM.repository.FlughafenRepository;
-import ch.zli.m223.ksh19a.dd.CRM.repository.LaenderRepository;
+import ch.zli.m223.ksh19a.dd.CRM.repository.LandRepository;
 
 @Service
-public class LaenderServiceImpl implements LaenderService {
+public class LandServiceImpl implements LandService {
 
 	@Autowired
-	public LaenderRepository laenderRepository;
+	public LandRepository laenderRepository;
 
 	@Autowired
 	public FlughafenRepository flughafenRepository;
 
 	@Override
-	public List<Laender> landList() {
+	public List<Land> landList() {
 		return new ArrayList<>(laenderRepository.findAll());
 	}
 
 	@Override
-	public Laender getLandById(Long id) {
+	public Land getLandById(Long id) {
 		return laenderRepository.findById(id).orElseThrow(() -> {
 			throw new LandNotFoundException("Das Land ist nicht Verfügbar");
 		});
@@ -43,6 +45,23 @@ public class LaenderServiceImpl implements LaenderService {
 	@Override
 	public List<Flughafen> flughafenList() {
 		return new ArrayList<>(flughafenRepository.findAll());
+	}
+
+	@Override
+	public Flughafen insertFlughafen(String name) {
+		if (name == null) {
+			throw new InvalidArgumentException("Please Enter a name");
+		}
+		if (flughafenRepository.findFlughafenByName(name).isPresent()) {// if not null
+			throw new UserAllreadyExistsException("User with name" + name + "already exists");
+		}
+		return flughafenRepository.insert(name, null);
+	}
+
+	@Override
+	public void deleteFlughafenById(Long id) {
+		if (id == null)
+			throw new InvalidArgumentException("Id darf nicht null sein");
 	}
 
 }

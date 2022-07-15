@@ -27,29 +27,29 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/users")
+	@GetMapping("/admin")
 	List<UserDto> getAllUsers() {
 		// todo get List from service Layer
 		return userService.getAllUser().stream().map(user -> new UserDto(user)).collect(Collectors.toList());
 	}
 
-	@GetMapping("/users/{id}")
+	@GetMapping("/admin/{id}")
 	UserDto getUser(@PathVariable("id") long id) {// suche im Pfad eine variable mit ID, nimm Wert und erstelle eine
 													// long
 		return new UserDto(userService.getUser(id));
 	}
 
-	@PostMapping("/users")
+	@PostMapping("/admin")
 	UserDto insertUser(@RequestBody UserInputDto userData) {
 		return new UserDto(userService.insertUser(userData.name, userData.password));
 	}
 
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/admin/{id}")
 	void deleteUser(@PathVariable("id") Long id) {
 		userService.deleteUserById(id);
 	}
 
-	@GetMapping("/users/{id}/roles")
+	@GetMapping("/admin/{id}/roles")
 	List<RoleDto> getRolesForUser(@PathVariable("id") long id) {
 		var user = userService.getUser(id);
 		return user.getRoles().stream().map(r -> new RoleDto(r)).collect(Collectors.toList());

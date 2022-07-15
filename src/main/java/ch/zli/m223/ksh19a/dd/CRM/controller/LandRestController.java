@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.zli.m223.ksh19a.dd.CRM.service.LaenderService;
+import ch.zli.m223.ksh19a.dd.CRM.service.LandService;
 
 @RestController
 @RequestMapping("/api/v2")
-public class LaenderRestController {
+public class LandRestController {
 
 	@Autowired
-	public LaenderService laenderService;
+	public LandService laenderService;
 
 	@GetMapping("/laender")
-	List<LaenderDto> getLaender() {
-		return laenderService.landList().stream().map(land -> new LaenderDto(land)).collect(Collectors.toList());
+	List<LandDto> getLaender() {
+		return laenderService.landList().stream().map(land -> new LandDto(land)).collect(Collectors.toList());
 	}
 
 	@GetMapping("/laender/{id}")
-	LaenderDto getLand(@PathVariable("id") Long id) {
-		return new LaenderDto(laenderService.getLandById(id));
+	LandDto getLand(@PathVariable("id") Long id) {
+		return new LandDto(laenderService.getLandById(id));
 	}
 
 	@GetMapping("/laender/{id}/flughafen")

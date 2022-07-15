@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Laender")
-public class LaenderImpl implements Laender {
+public class LandImpl implements Land {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,12 @@ public class LaenderImpl implements Laender {
 	@OneToMany(mappedBy = "laender", cascade = CascadeType.ALL)
 	private List<FlughafenImpl> flughaefen;
 
-	protected LaenderImpl() {
+	protected LandImpl() {
 		/* for JPA only */
 		flughaefen = new ArrayList<>();
 	}
 
-	public LaenderImpl(String land) {
+	public LandImpl(String land) {
 		this();
 		this.land = land;
 	}

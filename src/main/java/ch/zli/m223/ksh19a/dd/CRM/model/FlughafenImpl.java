@@ -22,7 +22,7 @@ public class FlughafenImpl implements Flughafen {
 	public String name;
 
 	@ManyToOne
-	public LaenderImpl laender;
+	public LandImpl laender;
 
 	@OneToMany(mappedBy = "flughafen", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AppUserImpl> users;
@@ -31,7 +31,7 @@ public class FlughafenImpl implements Flughafen {
 		/**/
 	}
 
-	public FlughafenImpl(String name, LaenderImpl laender) {
+	public FlughafenImpl(String name, LandImpl laender) {
 		this.name = name;
 		this.laender = laender;
 		users = new ArrayList<>();
