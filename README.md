@@ -72,7 +72,7 @@ Das Programm wurde mit dem Framework Spring Boot in Java umgesetzt und benötigt
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `void` | Put the ID number of a Land in the URL |
+| `id`      | `List<FlughafenDto>` | Put the ID number of a Land in the URL |
 
 
 ### UserRestController (Admin)
@@ -120,6 +120,17 @@ Das Programm wurde mit dem Framework Spring Boot in Java umgesetzt und benötigt
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `none`      | `String` | Shows the Userlist in the browser |
+
+
+#### Get Flughafenlist
+
+```http
+  GET /flughafenList
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `none`      | `String` | Shows the Flughafenlist in the browser |
 
 #### Get Adminseite
 
