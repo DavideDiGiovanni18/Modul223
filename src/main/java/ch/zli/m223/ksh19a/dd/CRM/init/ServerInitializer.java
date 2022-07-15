@@ -41,9 +41,9 @@ public class ServerInitializer implements ApplicationRunner {
 
 		AppUser max = userRepository.insert("Max", "max", eins);// User
 		roleRepository.insert(AppRoles.ADMIN, max);
-		roleRepository.insert(AppRoles.Passagier, max);
+		roleRepository.insert(AppRoles.PASSAGIER, max);
 
 		AppUser trax = userRepository.insert("Trax", "trax", eins);
-		roleRepository.insert(AppRoles.Passagier, trax);
+		roleRepository.insert(AppRoles.PASSAGIER, trax);
 	}
 }

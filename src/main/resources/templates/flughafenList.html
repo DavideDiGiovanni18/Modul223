@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<title>Users</title>
+</head>
+<body>
+	<h1>Application User List</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tr th:each="flug : ${flughafen}">
+			<td th:text="${flug.id}">ID</td>
+			<td th:text="${flug.name}">Flughafen</td>
+			<td><a type="button" th:with="url = @{/api/v3/flughafen/} + ${flug.id}" th:onclick="sendDelete([[${url}]])">Delete</a></td>
+		</tr>
+	</table>
+</body>
+<script th:inline="javascript">//Quelle: https://stackoverflow.com/questions/24256051/delete-or-put-methods-in-thymeleaf
+    function sendDelete(url) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", url, true);
+        xhttp.onload = function () {
+            let responseURL = xhttp.responseURL;
+            window.location.replace(responseURL);
+            window.location.href ="flughafenList";
+        };
+        xhttp.send();
+    }
+</script>
+</html>

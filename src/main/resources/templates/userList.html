@@ -1,5 +1,5 @@
 <!doctype html>
-<html></html>
+<html>
 <head>
 <title>Users</title>
 </head>
@@ -15,7 +15,21 @@
 		<tr th:each="user : ${users}">
 			<td th:text="${user.id}">user_id</td>
 			<td th:text="${user.name}">user_name</td>
+			<td><a type="button" th:with="url = @{/api/v1/admin/} + ${user.id}" th:onclick="sendDelete([[${url}]])">Delete</a></td>
 		</tr>
 	</table>
 </body>
+<script th:inline="javascript">//Quelle: https://stackoverflow.com/questions/24256051/delete-or-put-methods-in-thymeleaf
+    function sendDelete(url) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", url, true);
+        xhttp.onload = function () {
+            let responseURL = xhttp.responseURL;
+            window.location.replace(responseURL);
+            window.location.href ="userlist";
+ 
+        };
+        xhttp.send();
+    }
+</script>
 </html>

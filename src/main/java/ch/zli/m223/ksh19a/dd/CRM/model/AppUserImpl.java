@@ -25,10 +25,10 @@ public class AppUserImpl implements AppUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long id;
 
 	@Column(unique = true)
-	private String name;
+	public String name;
 
 	@ManyToOne
 	private FlughafenImpl flughafen;

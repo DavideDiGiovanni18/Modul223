@@ -29,7 +29,7 @@ public class LandRestController {
 	}
 
 	@GetMapping("/laender/{id}/flughafen")
-	List<FlughafenDto> getFlughfaenInLaender(@PathVariable("id") long id) {
+	List<FlughafenDto> getFlughafenInLaender(@PathVariable("id") long id) {
 		var land = laenderService.getLandById(id);
 		return land.getFlughafen().stream().map(r -> new FlughafenDto(r)).collect(Collectors.toList());
 	}

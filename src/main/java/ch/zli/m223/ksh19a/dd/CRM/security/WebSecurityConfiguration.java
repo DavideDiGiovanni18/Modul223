@@ -36,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private void configureRest(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().sessionManagement().disable().httpBasic().and().authorizeRequests()
 				.antMatchers("/api/v1/admin/**").hasAnyAuthority(AppRoles.ADMIN).antMatchers("/api/v3/flughafen")
-				.hasAnyAuthority(AppRoles.Passagier).antMatchers("/api/v3/flughafen/**").hasAnyAuthority(AppRoles.ADMIN)
+				.hasAnyAuthority(AppRoles.PASSAGIER).antMatchers("/api/v3/flughafen/**").hasAnyAuthority(AppRoles.ADMIN)
 				// dürfen
 				// zugreifen
 				.and().logout().permitAll();
@@ -46,10 +46,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private void configureWeb(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/admin/**").hasAuthority(AppRoles.ADMIN)
-				.antMatchers("/user/**").hasAuthority(AppRoles.Passagier).antMatchers("/flughafen/**")
-				.hasAnyAuthority(AppRoles.ADMIN).antMatchers("/logedin").authenticated().and().formLogin().permitAll()// Alle
-																														// //
-																														// zugreifen
+				.antMatchers("/user/**").hasAuthority(AppRoles.PASSAGIER).antMatchers("/flughafen/**")
+				.hasAnyAuthority(AppRoles.ADMIN).antMatchers("/userlist/**").hasAuthority(AppRoles.ADMIN)
+				.antMatchers("/flughafenList/**").hasAuthority(AppRoles.ADMIN).antMatchers("/flughafenList/**")
+				.hasAuthority(AppRoles.PASSAGIER).antMatchers("/logedin").authenticated().and().formLogin().permitAll()// Alle
+				// //
+				// zugreifen
 				.and().logout().permitAll();
 	}
 
